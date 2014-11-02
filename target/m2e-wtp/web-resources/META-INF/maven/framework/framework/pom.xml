@@ -24,6 +24,16 @@
 					<warSourceDirectory>webapp</warSourceDirectory>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>my-server</server>
+					<path>/</path>
+				</configuration>
+			</plugin>
 		</plugins>
 		<resources>
 		    <resource>
@@ -321,13 +331,13 @@
 			<version>0.2.7</version>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>core.log</groupId>
 			<artifactId>log4sql</artifactId>
 			<version>7.0.8</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/webapp/WEB-INF/lib/log4sql.jar</systemPath>
-		</dependency>
+		</dependency> -->
 
 		<!-- logging -->
 		<dependency>
