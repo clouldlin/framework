@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>framework</groupId>
 	<artifactId>framework</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -25,6 +25,20 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+		    <resource>
+		        <directory>src/main/java</directory>
+		        <includes>
+		        	<include>**/*</include>
+		        </includes>
+		        <excludes>
+		     		<exclude>**/*.java</exclude>
+		        </excludes>
+		    </resource>
+		    <resource>
+		        <directory>src/main/resource</directory>
+		    </resource>        
+		</resources>
 	</build>
 	<properties>
 		<spring.maven.artifact.version>3.0.5.RELEASE</spring.maven.artifact.version>
