@@ -10,7 +10,6 @@ import org.junit.Test;
 
 public class AnnottionPackageScanTest {
 	
-	
 	private static List<String> findClassesWithPackageName(String packageName) throws Exception {
 
 		Enumeration<URL> en = AnnottionPackageScan.class.getClassLoader().getResources(packageName.replace(".", "/"));

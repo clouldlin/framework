@@ -9,13 +9,16 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.lin.clould.framework.common.annotation.RequestParam;
-import com.lin.clould.framework.common.annotation.ResponseMapping;
-import com.lin.clould.framework.common.annotation.Result;
 import com.lin.clould.framework.common.constant.CommandConstant;
 import com.lin.clould.framework.common.util.ParameterUtil;
+import com.lin.clould.framework.common.view.View;
 
 public class ProxyInvoker {
+	
+	private static Logger logger = Logger.getLogger(ProxyInvoker.class); 
 	
 	private Method method;
 	private Object obj;
@@ -27,26 +30,6 @@ public class ProxyInvoker {
 	}
 	
 	public void invoke(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
-		
-//		System.out.println(method);
-//		System.out.println(obj);
-		
-// 		method.invoke(obj, args); // 파라미터를 어떻게 처리할 것인가?
-		
-//		// block + ctrl + /		
-//		Annotation[][] annotations = method.getParameterAnnotations();
-//		
-//		// 1차적으로 메소드의 파라미터를 가져온다.
-//		for (Annotation[] tempAnnotations : annotations) {
-//			System.out.println(Arrays.toString(tempAnnotations));
-//			// 2차로 파라미터마다 어노테이션을 가져온다. 파라미터당 어노테이션을 여러개 걸 수 있기 때무에.
-//			for (Annotation annotation : tempAnnotations) {
-//				if(annotation.annotationType() == RequestParam.class){
-//					String value = ((RequestParam)annotation).value();
-//					System.out.println("RequestParam Value : " + value);
-//				}
-//			}
-//		}
 		
 		Class<?>[] parameterTypes = method.getParameterTypes();
 		Object[] parameterArr = new Object[parameterTypes.length];
@@ -62,7 +45,7 @@ public class ProxyInvoker {
 			
 			String checkParameterTypeClass = parameterTypes[i].toString();
 			String userParameterDefinedClass = checkParameterTypeClass.substring(checkParameterTypeClass.indexOf(" ") + 1);
-			
+			System.out.println("userParameterDefinedClass :" + userParameterDefinedClass);
 			
 			// vo 클래스 파라미터 check
 			// ex) class com.lin.clould.anno.user.vo.UserVO 파싱 처리
@@ -77,6 +60,14 @@ public class ProxyInvoker {
 			if("java.util.HashMap".equals(userParameterDefinedClass) || "java.util.Map".equals(userParameterDefinedClass) ){
 				Map<String, String[]> hashMap = request.getParameterMap();
 				parameterArr[i] = hashMap;
+			}
+			
+			if("javax.servlet.http.HttpServletRequest".equals(userParameterDefinedClass)){
+				parameterArr[i] = request;
+			}
+			
+			if("javax.servlet.http.HttpServletResponse".equals(userParameterDefinedClass)){
+				parameterArr[i] = reponse;
 			}
 			
 		}
@@ -113,8 +104,14 @@ public class ProxyInvoker {
 		
 		System.out.println("parameterArr : " + Arrays.toString(parameterArr));
 		
+		View resutlObj = (View)method.invoke(obj, parameterArr);
+		logger.info("리턴값 :" + resutlObj.toString());
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(resutlObj.getNextPage());
+		dispatcher.forward(request, reponse);
 		// 파라미터 처리 끝
 		
+		/*
 		// 리턴타입 처리
 		Result result = method.getAnnotation(Result.class);
 		
@@ -126,6 +123,8 @@ public class ProxyInvoker {
 		
 		// 리턴값
 		Object resutlObj = method.invoke(obj, parameterArr);
+		
+		logger.info("리턴값 :" + resutlObj.toString());
 		
 		if( method.isAnnotationPresent(ResponseMapping.class)){
 			ResponseMapping responseResult = method.getAnnotation(ResponseMapping.class);
@@ -139,7 +138,7 @@ public class ProxyInvoker {
 			
 			dispatcher.forward(request, reponse);
 		}
-		
+		*/
 	}
 	
 }

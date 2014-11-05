@@ -1,6 +1,5 @@
 package com.lin.clould.framework.common;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
 
 import com.lin.clould.framework.common.annotation.Controller;
 import com.lin.clould.framework.common.annotation.RequestMapping;
@@ -21,6 +22,8 @@ public class FrontController extends HttpServlet {
 	
 	private static final long serialVersionUID = 6196450769868311233L;
 	
+	private static Logger logger = Logger.getLogger(FrontController.class); 
+	
 	private Map<String, ProxyInvoker> proxyInvokerMap = new HashMap<String, ProxyInvoker>();
 	
     public FrontController() {
@@ -31,7 +34,6 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		
 		String targetPackage = config.getInitParameter("package-scan");
-		System.out.println("Scanned TargetPackage : " + targetPackage);
 		
 		try {
 			CommandConstant.findClassNameList = AnnottionPackageScan.findClassesWithPackageName(targetPackage);
@@ -69,27 +71,22 @@ public class FrontController extends HttpServlet {
     		RequestMapping RequestMappingAnnotationClass = m.getAnnotation(RequestMapping.class);
     		System.out.println(obj.toString() + " : " + controller_value + "" + RequestMappingAnnotationClass.value());
     		
-    		proxyInvokerMap.put(controller_value + "" + RequestMappingAnnotationClass.value(), new ProxyInvoker(m, obj));
+    		proxyInvokerMap.put("/" + controller_value + "/" + RequestMappingAnnotationClass.value(), new ProxyInvoker(m, obj));
     	}
 		
 	}
 
 	@Override
-    protected void service(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse reponse) {
 		
-    	System.out.println("service...........");
-    	System.out.println("proxyInvokerMap : " + proxyInvokerMap);
-    	
     	String requestURI = request.getPathInfo();
-    	
-    	System.out.println("request url : " + requestURI);
     	
     	ProxyInvoker invoker = proxyInvokerMap.get(requestURI);
     	
-    	try {
+		try {
 			invoker.invoke(request, reponse);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
     	
     }
