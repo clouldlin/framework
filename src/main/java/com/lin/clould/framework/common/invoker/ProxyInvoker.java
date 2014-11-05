@@ -29,7 +29,7 @@ public class ProxyInvoker {
 		this.obj = obj;
 	}
 	
-	public void invoke(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
+	public void invoke(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		Class<?>[] parameterTypes = method.getParameterTypes();
 		Object[] parameterArr = new Object[parameterTypes.length];
@@ -67,7 +67,7 @@ public class ProxyInvoker {
 			}
 			
 			if("javax.servlet.http.HttpServletResponse".equals(userParameterDefinedClass)){
-				parameterArr[i] = reponse;
+				parameterArr[i] = response;
 			}
 			
 		}
@@ -107,8 +107,14 @@ public class ProxyInvoker {
 		View resutlObj = (View)method.invoke(obj, parameterArr);
 		logger.info("리턴값 :" + resutlObj.toString());
 		
+		// 리다이렉트
+		if(resutlObj.isRedirect() == true){
+			response.sendRedirect(resutlObj.getNextPage());
+			return;
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/" + resutlObj.getNextPage() + ".jsp");
-		dispatcher.forward(request, reponse);
+		dispatcher.forward(request, response);
 		// 파라미터 처리 끝
 		
 		/*

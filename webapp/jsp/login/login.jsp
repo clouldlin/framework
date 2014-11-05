@@ -9,6 +9,8 @@
 ${module}
 <div>
 로그인 처리
+<br />
+<a href="${pageContext.request.contextPath}/framework/login/logout.do">로그아웃</a>
 </div>
 </body>
 </html>
