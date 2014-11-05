@@ -107,7 +107,7 @@ public class ProxyInvoker {
 		View resutlObj = (View)method.invoke(obj, parameterArr);
 		logger.info("리턴값 :" + resutlObj.toString());
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(resutlObj.getNextPage());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/" + resutlObj.getNextPage() + ".jsp");
 		dispatcher.forward(request, reponse);
 		// 파라미터 처리 끝
 		

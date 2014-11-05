@@ -15,6 +15,6 @@ public class FramewrokController {
 		
 		request.setAttribute("version", "My-Annotation FrameWrok 0.0.2");
 		
-		return new View("/jsp/framework/version.jsp");
+		return new View("framework/version");
 	}
 }

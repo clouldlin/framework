@@ -1,7 +1,7 @@
 package com.lin.clould.framework.module.main.service.impl;
 
-import org.springframework.stereotype.Repository;
+import com.lin.clould.framework.common.database.ibatis.CommonDao;
 
-public class MainDAO {
+public class MainDAO extends CommonDao {
 
 }

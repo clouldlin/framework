@@ -69,7 +69,7 @@ public class FrontController extends HttpServlet {
     		}
     		
     		RequestMapping RequestMappingAnnotationClass = m.getAnnotation(RequestMapping.class);
-    		System.out.println(obj.toString() + " : " + controller_value + "" + RequestMappingAnnotationClass.value());
+    		System.out.println(obj.toString() + " : " + "/" +controller_value + "/" + RequestMappingAnnotationClass.value());
     		
     		proxyInvokerMap.put("/" + controller_value + "/" + RequestMappingAnnotationClass.value(), new ProxyInvoker(m, obj));
     	}

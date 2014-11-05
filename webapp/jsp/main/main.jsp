@@ -3,9 +3,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Framework-Verson</title>
+<title>메인페이지</title>
 </head>
 <body>
-${main}
+${module}
+<div>
+<form method="post" action="${pageContext.request.contextPath}/framework/login/login.do">
+	<input type="text" name="id">
+	<input type="password" name="pasword">
+	<input type="submit" value="로그인">
+</form>
+</div>
 </body>
 </html>

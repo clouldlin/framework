@@ -13,8 +13,8 @@ public class MainController {
 	@RequestMapping("main.do")
 	public View main(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		request.setAttribute("main", "main");
+		request.setAttribute("module", "main");
 		
-		return new View("/jsp/main/main.jsp");
+		return new View("main/main");
 	}
 }
