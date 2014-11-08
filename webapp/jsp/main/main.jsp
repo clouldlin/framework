@@ -7,6 +7,7 @@
 </head>
 <body>
 ${module}
+11
 <div>
 <form method="post" action="${pageContext.request.contextPath}/framework/login/login.do">
 	<input type="text" name="id">
