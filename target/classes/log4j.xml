@@ -9,7 +9,7 @@
 	</appender>
 
 	<appender name="File" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="C:\Dropbox\Document\Programming\Java\Application\Web\log\framework\logs\framework.log" /> 
+		<param name="File" value="/home/logs/framework/framework.log" /> 
 		<!-- <param name="File" value="/usr/local/apache-tomcat-7.0.56/logs/webapp/framework/framework.log" /> -->
 		<param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>  
 		<layout class="org.apache.log4j.PatternLayout">
