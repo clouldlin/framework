@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.lin.clould.framework.common.annotation.Controller;
 import com.lin.clould.framework.common.annotation.RequestMapping;
+import com.lin.clould.framework.common.annotation.SessionCertification;
 import com.lin.clould.framework.common.util.session.SessionUtil;
 import com.lin.clould.framework.common.util.string.StringUtil;
 import com.lin.clould.framework.common.view.View;

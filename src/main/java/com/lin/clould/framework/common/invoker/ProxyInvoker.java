@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.lin.clould.framework.common.annotation.RequestParam;
+import com.lin.clould.framework.common.annotation.SessionCertification;
 import com.lin.clould.framework.common.constant.CommandConstant;
 import com.lin.clould.framework.common.util.ParameterUtil;
+import com.lin.clould.framework.common.util.session.SessionUtil;
 import com.lin.clould.framework.common.view.View;
 
 public class ProxyInvoker {
@@ -103,6 +105,20 @@ public class ProxyInvoker {
 		} 
 		
 		System.out.println("parameterArr : " + Arrays.toString(parameterArr));
+		
+		// SessionCertification.clsss check
+		if(method.isAnnotationPresent(SessionCertification.class)){ 
+			if(!SessionUtil.sessionCheck(request) ){
+				SessionCertification sessionCertificationAnno = method.getAnnotation(SessionCertification.class);
+				System.out.println(sessionCertificationAnno.message());
+				
+				request.setAttribute("message", sessionCertificationAnno.message());
+				response.sendRedirect("/framework/framework/login/login.do");
+				return;
+				//RequestDispatcher dispatcher = request.getRequestDispatcher("/framework/framework/login/login.do");
+				//dispatcher.forward(request, response);
+			}
+		}
 		
 		View resutlObj = (View)method.invoke(obj, parameterArr);
 		logger.info("리턴값 :" + resutlObj.toString());

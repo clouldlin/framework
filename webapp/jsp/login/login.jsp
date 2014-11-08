@@ -7,6 +7,7 @@
 </head>
 <body>
 ${module}
+${message}
 <div>
 로그인 처리
 <br />
