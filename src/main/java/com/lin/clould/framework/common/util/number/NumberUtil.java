@@ -65,6 +65,26 @@ public class NumberUtil {
 		
 	}
 	
+	public static void unnecessaryWrapperObjectCreationExample(){
+		
+		String string = "0";
+		
+		Integer i = 1;
+		
+		// valueOf(string)는 새로운 Integer 인스턴스를 생성하지만,
+		// parseInt는 새로운 Integer 인스턴스를 생성하지 않는다.
+		
+		int i2 = Integer.parseInt(string);
+		double d = Double.parseDouble(string);
+		float f = Float.parseFloat(string);
+		
+		String s1 = Integer.toString(i2);
+		String s2 = Double.toString(d);
+		
+		Double d2 = 1.2;
+		String s3 = d2.toString();
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(NumberUtil.bigIntegerExample());
 		System.out.println(NumberUtil.bigDecimalExample());
