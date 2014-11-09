@@ -44,7 +44,7 @@ public class LoginController {
 					throw new Exception("아이디 또는 비밀번호가 일치하지 않습니다. \\n다시 확인 후 입력해 주시기 바랍니다.");
 				}
 			}
-		} catch (Exception e) {
+		} catch (Exception e) { // 만약 catch 절이 비어있다면, NullPointException도 무시된다.
 			view = "login/login";
 			request.setAttribute("message", e.getMessage());
 		}

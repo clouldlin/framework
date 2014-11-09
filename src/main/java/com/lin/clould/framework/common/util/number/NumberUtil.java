@@ -50,9 +50,25 @@ public class NumberUtil {
 		return bdValue1.add(bdValue2);
 	}
 	
+	private static void isNan(){
+		
+		// 어떠한 이유로 숫자가 아닌 값(NaN: Not a Number)을 할당했다고 가정
+		Double errorValue = Double.NaN;
+		
+		// 오류를 검증하기 위해 오류 값을 Double.NaN과 비교
+		if(Double.isNaN(errorValue)){
+		//if(errorValue == Double.NaN){
+			System.out.println("오류 발생");
+		}else{
+			System.out.println("정상 처리");
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		System.out.println(NumberUtil.bigIntegerExample());
 		System.out.println(NumberUtil.bigDecimalExample());
+		NumberUtil.isNan();
 	}
 
 }
