@@ -4,16 +4,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인페이지</title>
+<link rel="stylesheet" type="text/css" href="/framework/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/framework/css/main/main.css" />
+<script src="/framework/js/common.js"></script>
+<script src="/framework/js/login/login.js"></script>
+<script src="/framework/js/main/main.js"></script>
 </head>
 <body>
-${module}
-11
-<div>
-<form method="post" action="${pageContext.request.contextPath}/framework/login/login.do">
-	<input type="text" name="id">
-	<input type="password" name="pasword">
-	<input type="submit" value="로그인">
-</form>
+<div class="wrapper">  
+	<div class="header">
+		<div class="main_title">메인</div>
+		<div class="login">
+			<form method="post" action="${pageContext.request.contextPath}/framework/login/login.do">
+				<input type="text" size="15" name="id" id="id">
+				<input type="password" size="15" name="pasword" id="password">
+				<input type="submit" id="submit" value="로그인">
+				<div><input type="checkbox" id="id_save"><span class="id_save">아이디 저장</span></div>
+			</form>
+		</div>
+	</div> 
+	<div class="sidebar"></div>
+	<div class="content"></div>
+	<div class="footer"></div>
 </div>
+
 </body>
 </html>

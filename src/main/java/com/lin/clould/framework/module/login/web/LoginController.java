@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import com.lin.clould.framework.common.annotation.Controller;
 import com.lin.clould.framework.common.annotation.RequestMapping;
-import com.lin.clould.framework.common.annotation.SessionCertification;
 import com.lin.clould.framework.common.util.session.SessionUtil;
 import com.lin.clould.framework.common.util.string.StringUtil;
 import com.lin.clould.framework.common.view.View;
@@ -47,6 +46,8 @@ public class LoginController {
 		} catch (Exception e) { // 만약 catch 절이 비어있다면, NullPointException도 무시된다.
 			view = "login/login";
 			request.setAttribute("message", e.getMessage());
+			// logger.error("외부전달 오류");
+			// logger.error(e.getMessage); // 내부 오류
 		}
 		
 		return new View(view);

@@ -1,0 +1,5 @@
+/* 태그초기화 */
+body{margin:0px; font-family:"맑은 고딕", Dotum, Arial, Sans-serif; font-size: small; color:#333;}
+h1, p {margin:0px;}
+h1{font-size:inherit; }
+/* 공통 모듈 */
