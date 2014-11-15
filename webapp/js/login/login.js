@@ -1,6 +1,7 @@
 
 var login = login || {};
 
+// 즉시실행 함수 : 생성순간, 한번밖에 호출할수 없다.
 login = (function(win) {
  
 	var global = win;
@@ -38,7 +39,8 @@ login = (function(win) {
         idSave : idSave
     };
 }(window));
-	Common.eventBind(window, "load", function () {
+
+Common.eventBind(window, "load", function () {
 	Common.eventBind(document.getElementById("submit"), "click", function (event) {
 		alert("이벤트!");
 		event.preventDefault(); 
