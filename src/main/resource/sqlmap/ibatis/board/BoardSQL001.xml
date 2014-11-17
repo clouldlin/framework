@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BoardSQL001">
+	
+	<!-- 메인 공지사항 리스트 -->
+	<select id="mainNoticeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT DATA.*, 
+		       ROWNUM RNUM 
+		  FROM 
+		       (SELECT * 
+		         FROM BOARD t1 
+			       ORDER BY t1.POS DESC 
+		       ) DATA 
+		 <![CDATA[
+			 WHERE ROWNUM > #firstIndex#
+			 AND ROWNUM <= #lastIndex#
+		 ]]>
+	</select>
+	
+	<!-- 메인 공지사항 전체 갯수 -->
+	<select id="mainNoticeListTotalCount" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT COUNT(*) 
+		  FROM BOARD t1 
+	</select>
+	
+</sqlMap>

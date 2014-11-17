@@ -26,6 +26,7 @@
 	<div class="sidebar"></div>
 	<div class="content"></div>
 	<div class="footer"></div>
+	${noticeCount}
 </div>
 
 </body>

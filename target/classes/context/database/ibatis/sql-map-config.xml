@@ -21,5 +21,5 @@
 		</dataSource>
 	</transactionManager>
 	
-	<sqlMap resource="sqlmap/ibatis/juso/JusoCodeSQL001.xml" />
+	<sqlMap resource="sqlmap/ibatis/board/BoardSQL001.xml" />
 </sqlMapConfig>
