@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+"http://java.suncom/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+  <tlibversion>1.0</tlibversion>
+  <jspversion>1.1</jspversion>
+  <shortname>paging-taglib</shortname>
+  <uri>WEB-INF/tld/paging-taglib.tld</uri>
+  <info>
+      Paging tag library
+  </info>
+
+  <tag>
+    <name>page</name>
+    <tagclass>com.lin.clould.framework.common.util.PagingTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>
+      paging
+    </info>
+    <attribute>
+        <name>link</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>page</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+        <name>totalCount</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+        <name>listPerPage</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>    
+    <attribute>
+        <name>beginLabel</name>
+        <required>true</required>
+    </attribute>
+    <attribute>
+        <name>endLabel</name>
+        <required>true</required>
+    </attribute>
+    <attribute>
+        <name>nextLabel</name>
+        <required>true</required>
+    </attribute>
+    <attribute>
+        <name>prevLabel</name>
+        <required>true</required>
+    </attribute>
+    <attribute>
+        <name>pageGroupSize</name>
+        <required>true</required>
+    </attribute>
+    <attribute>
+        <name>linkType</name>
+        <required>false</required>
+    </attribute>
+    <attribute>
+        <name>linkMethod</name>
+        <required>false</required>
+    </attribute>
+  </tag>
+</taglib>

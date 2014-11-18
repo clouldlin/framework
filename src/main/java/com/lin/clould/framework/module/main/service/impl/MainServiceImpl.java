@@ -10,12 +10,12 @@ public class MainServiceImpl implements MainService {
 	MainDAO mainDAO = new MainDAO();
 	
 	@Override
-	public List<?> mainNoticeList(Map<String, String> paramMap) throws Exception {
+	public List<?> mainNoticeList(Map<String, Object> paramMap) throws Exception {
 		return mainDAO.mainNoticeList(paramMap);
 	}
 
 	@Override
-	public Integer mainNoticeListTotalCount(Map<String, String> paramMap) throws Exception {
+	public Integer mainNoticeListTotalCount(Map<String, Object> paramMap) throws Exception {
 		return mainDAO.mainNoticeListTotalCount(paramMap);
 	}
 

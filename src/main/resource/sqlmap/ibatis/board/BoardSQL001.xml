@@ -3,18 +3,27 @@
 
 <sqlMap namespace="BoardSQL001">
 	
+	<resultMap id="boardMap" class="java.util.HashMap">
+		<result property="seq" 		column="BOARD_SEQ" 	javaType="String" 	jdbcType="NUMBER"/>
+		<result property="title"	column="TITLE" 		javaType="String" 	jdbcType="VARCHAR2"/>
+		<result property="content" 	column="CONTENT" 	javaType="String" 	jdbcType="CLOB"/>
+	</resultMap>
+	
 	<!-- 메인 공지사항 리스트 -->
-	<select id="mainNoticeList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
-		SELECT DATA.*, 
-		       ROWNUM RNUM 
+	<select id="mainNoticeList" parameterClass="java.util.HashMap" resultMap="boardMap">
+		SELECT * 
 		  FROM 
-		       (SELECT * 
-		         FROM BOARD t1 
-			       ORDER BY t1.POS DESC 
-		       ) DATA 
-		 <![CDATA[
-			 WHERE ROWNUM > #firstIndex#
-			 AND ROWNUM <= #lastIndex#
+		       (SELECT DATA.*, 
+		              ROWNUM RNUM 
+		         FROM 
+		              (SELECT * 
+		                FROM BOARD t1 
+		            ORDER BY t1.POS DESC 
+		              ) DATA 
+		       ) DATA
+		<![CDATA[
+			 WHERE RNUM > #firstIndex#
+			 AND RNUM <= #lastIndex#
 		 ]]>
 	</select>
 	

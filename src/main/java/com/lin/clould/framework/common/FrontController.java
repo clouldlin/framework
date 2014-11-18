@@ -80,7 +80,7 @@ public class FrontController extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse reponse) {
 		
     	String requestURI = request.getPathInfo();
-    	
+    	System.out.println("requestURI : " + requestURI);
     	ProxyInvoker invoker = proxyInvokerMap.get(requestURI);
     	
 		try {

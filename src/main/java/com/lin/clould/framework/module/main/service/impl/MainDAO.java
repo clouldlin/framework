@@ -7,11 +7,11 @@ import com.lin.clould.framework.common.database.ibatis.CommonDao;
 
 public class MainDAO extends CommonDao {
 	
-	public List<?> mainNoticeList(Map<String, String> paramMap) throws Exception {
+	public List<?> mainNoticeList(Map<String, Object> paramMap) throws Exception {
 		return list("BoardSQL001.mainNoticeList", paramMap);
 	}
 
-	public Integer mainNoticeListTotalCount(Map<String, String> paramMap) throws Exception {
+	public Integer mainNoticeListTotalCount(Map<String, Object> paramMap) throws Exception {
 		return (Integer) selectByPk("BoardSQL001.mainNoticeListTotalCount",paramMap);
 	}
 

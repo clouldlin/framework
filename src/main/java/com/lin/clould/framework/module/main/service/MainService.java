@@ -5,8 +5,8 @@ import java.util.Map;
 
 public interface MainService {
 
-	List<?> mainNoticeList(Map<String, String> paramMap) throws Exception;
+	List<?> mainNoticeList(Map<String, Object> paramMap) throws Exception;
 
-	Integer mainNoticeListTotalCount(Map<String, String> paramMap) throws Exception;
+	Integer mainNoticeListTotalCount(Map<String, Object> paramMap) throws Exception;
 
 }
