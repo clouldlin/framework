@@ -4,16 +4,16 @@
 <%
 	
 	String filePath = "";
-	String fileNm   = box.get("file_nm");
+	String fileNm   = request.getParameter("file_nm");
 	String fileRealName = fileNm;
 	if(fileRealName.length() > 18){
 		fileRealName = fileNm.substring(0, fileNm.length()-17);
 	}
-	String pathKey  = box.get("path_key");
+	String pathKey  = request.getParameter("path_key");
 	pathKey = pathKey.replaceAll("\\.","xx").replaceAll("/","xx").replaceAll("\\\\","xx");
 	fileNm = fileNm.replaceAll("\\.\\.","xx").replaceAll("/","xx").replaceAll("\\\\","xx");
 	
-	filePath = gfw.lib.CD.CT_REAL_PH + "/upload_data/" + pathKey + "/" + fileNm; 
+	filePath = "/home/lin/upload_data/" + pathKey + "/" + fileNm; 
 	File file = new File(filePath);
 	
 	if (file.exists()) {
