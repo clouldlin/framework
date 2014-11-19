@@ -1,4 +1,4 @@
-package com.lin.clould.framework.common.util;
+package com.lin.clould.framework.common.util.paging;
 
 import java.io.IOException;
 import java.net.URLDecoder;

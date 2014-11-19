@@ -30,8 +30,8 @@ public class PropertyFileReaderTest {
 		assertThat(property.prop.getProperty(DATABASE), is("oracle"));
 		assertThat(property.prop.getProperty(DATABASE_DRIVER), is("oracle.jdbc.driver.OracleDriver"));
 		assertThat(property.prop.getProperty(DATABASE_URL), is("jdbc:oracle:thin:@192.168.31.128:1521:orcl"));
-		assertThat(property.prop.getProperty(DATABASE_USERNAME), is("nibrman"));
-		assertThat(property.prop.getProperty(DATABASE_PASSWORD), is("nibrman"));
+		assertThat(property.prop.getProperty(DATABASE_USERNAME), is("heo"));
+		assertThat(property.prop.getProperty(DATABASE_PASSWORD), is("heo"));
 		
 	}
 	

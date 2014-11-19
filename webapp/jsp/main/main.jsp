@@ -23,10 +23,23 @@
 	 f.action = "/framework/framework/main/main.do";
 	 f.submit();
  };
+ 
+ /********************************************************************************
+  * 기      능   	:  파일다운로드 처리
+  * @param obj	:
+  * @return  	:
+  ********************************************************************************/
+ var file_down = function(fileName) {
+ 	location.href="/framework/framework/common/download.do?path_key=barcode&file_nm=" + fileName;
+ }
+ 
 </script>
 </head>
 <body>
-<div class="wrapper">  
+<div>
+<span onclick="file_down(2); return false;" onkeypress="file_down(2); return false;" style="cursor: pointer;"><a href="#">다운로드</a></span>
+</div>
+<div class="wrapper" style="display: none;">  
 	<div class="header">
 		<div class="main_title">메인</div>
 		<div class="login">

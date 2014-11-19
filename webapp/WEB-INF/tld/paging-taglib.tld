@@ -7,13 +7,11 @@
   <jspversion>1.1</jspversion>
   <shortname>paging-taglib</shortname>
   <uri>WEB-INF/tld/paging-taglib.tld</uri>
-  <info>
-      Paging tag library
-  </info>
+  <info>Paging tag library</info>
 
   <tag>
     <name>page</name>
-    <tagclass>com.lin.clould.framework.common.util.PagingTag</tagclass>
+    <tagclass>com.lin.clould.framework.common.util.paging.PagingTag</tagclass>
     <bodycontent>empty</bodycontent>
     <info>
       paging
