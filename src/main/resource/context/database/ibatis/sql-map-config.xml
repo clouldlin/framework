@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
 	
-	<properties resource="property/database/centos_database.properties" />
+	<properties resource="property/database/oracle_database.properties" />
 	
 	<settings 
 		cacheModelsEnabled="true" enhancementEnabled="true"

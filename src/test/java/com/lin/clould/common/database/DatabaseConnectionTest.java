@@ -16,7 +16,7 @@ public class DatabaseConnectionTest {
 	private static final String DATABASE_PASSWORD = "password";
 	private static final String DATABASE_USERNAME = "username";
 
-	private static final String PROPERTY_DATABASE_CENTOS_DATABASE_PROPERTIES = "property/database/centos_database.properties";
+	private static final String PROPERTY_DATABASE_CENTOS_DATABASE_PROPERTIES = "property/database/maria_database.properties";
 	
 	private PropertyFileReader getDatabasePropertyObject(String property_file) {
 		PropertyFileReader property = new PropertyFileReader();
@@ -32,7 +32,7 @@ public class DatabaseConnectionTest {
 
 	private void selected_database_and_getConnection(String database, String database_url, String database_username, String database_password) throws SQLException {
 		Connection conn;
-		if (database.equals("oracle")) conn = DriverManager.getConnection(database_url, database_username, database_password);
+		if (database.equals("maria")) conn = DriverManager.getConnection(database_url, database_username, database_password);
 	}
 	
 	@Test
